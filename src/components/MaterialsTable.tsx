@@ -3,9 +3,10 @@ import { CalculationResult } from '../types';
 
 interface MaterialsTableProps {
   results: CalculationResult;
+  material: string;
 }
 
-const MaterialsTable: React.FC<MaterialsTableProps> = ({ results }) => {
+const MaterialsTable: React.FC<MaterialsTableProps> = ({ results, material }) => {
   if (!results || !results.materials || results.materials.length === 0) {
     return null;
   }
@@ -14,7 +15,7 @@ const MaterialsTable: React.FC<MaterialsTableProps> = ({ results }) => {
     <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in print:shadow-none">
       <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 print:bg-blue-600">
         <h2 className="text-xl font-bold text-white">
-          Materiais para {results.totalArea} m²
+          Materiais para {results.totalArea} m² de {material}
         </h2>
         <p className="text-blue-100">
           Estimativa baseada em coeficientes padrão de construção

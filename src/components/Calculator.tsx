@@ -3,34 +3,48 @@ import { calculateMaterials } from '../utils/calculations';
 import MaterialsTable from './MaterialsTable';
 import { Material, CalculationResult } from '../types';
 import { forroMaterials } from '../utils/forroMaterials';
+import { paredeMaterials } from '../utils/paredeMaterials';
+import { contraParedeMaterials } from '../utils/contraParedeMaterials';
 
 
 const Calculator: React.FC = () => {
   const [area, setArea] = useState<string>('');
+  const [tipoArea, setTipoArea] = useState<'forro' | 'parede' | 'contraParede'>('forro');
   const [results, setResults] = useState<CalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [materials, setMaterials] = useState<Material[]>(forroMaterials);
+ 
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const areaValue = parseFloat(area);
-    
+
     if (!areaValue || isNaN(areaValue) || areaValue <= 0) {
       setError('porfavor, insira um valor válido para a área.');
       setResults(null);
       return;
     }
-    
+
     setError('');
     setIsCalculating(true);
 
     setTimeout(() => {
-      const calculationResults = calculateMaterials(areaValue, materials);
+      const calculationResults = calculateMaterials(areaValue, getMaterialsByType(tipoArea));
       setResults(calculationResults);
       setIsCalculating(false);
     }, 600);
+  };
+
+  const getMaterialsByType = (tipo: string): Material[] => {
+    switch (tipo) {
+      case 'parede':
+        return paredeMaterials;
+      case 'contraParede':
+        return contraParedeMaterials;
+      default:
+        return forroMaterials;
+    }
   };
 
   const handleReset = () => {
@@ -44,16 +58,29 @@ const Calculator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 print:py-2">
+    <section className="max-w-4xl mx-auto px-4 py-8 print:py-2">
       <div className="bg-white rounded-lg shadow-lg p-6 mb-8 print:shadow-none">
         <form onSubmit={handleCalculate} className="space-y-6">
           <div>
-            <label 
-              htmlFor="area" 
+            <label
+              htmlFor="area"
               className="block text-gray-700 text-sm font-medium mb-2"
             >
               Área total (m²)
             </label>
+            <div className="flex items-center space-x-4 mb-4">
+              <label className="block text-gray-700 text-sm font-medium mb-2">Tipo de Área</label>
+              <select
+                value={tipoArea}
+                onChange={(e) => setTipoArea(e.target.value as 'forro' | 'parede' | 'contraParede')}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              >
+                <option value="forro">Forro</option>
+                <option value="parede">Parede</option>
+                <option value="contraParede">Contra Parede</option>
+              </select>
+            </div>
+
             <div className="relative">
               <input
                 id="area"
@@ -63,15 +90,14 @@ const Calculator: React.FC = () => {
                 value={area}
                 onChange={e => setArea(e.target.value)}
                 placeholder="Ex: 100"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none transition-colors duration-200 ${
-                  error ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-100 focus:border-blue-500'
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none transition-colors duration-200 ${error ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-100 focus:border-blue-500'
+                  }`}
               />
               <span className="absolute right-3 top-3 text-gray-500">m²</span>
             </div>
             {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           </div>
-          
+
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <button
               type="submit"
@@ -111,8 +137,8 @@ const Calculator: React.FC = () => {
         </form>
       </div>
 
-      {results && <MaterialsTable results={results} />}
-    </div>
+      {results && <MaterialsTable results={results} material={tipoArea} />}
+    </section>
   );
 };
 

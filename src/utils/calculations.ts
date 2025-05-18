@@ -1,14 +1,4 @@
 import { Material, CalculationResult } from '../types';
-import { contraParedeMaterials } from './contraParedeMaterials';
-import { forroMaterials } from './forroMaterials';
-import { paredeMaterials } from './paredeMaterials';
-
-export const allMaterials = [
-  forroMaterials,
-  paredeMaterials,
-  contraParedeMaterials
-];
-
 
 export const calculateMaterials = (
   area: number, 
