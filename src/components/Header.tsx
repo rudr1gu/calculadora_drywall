@@ -8,20 +8,21 @@ const Header: React.FC = () => {
         <div className="flex items-center mb-4 md:mb-0">
           <HardHat size={32} className="mr-3 text-blue-200" />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Calculadora de Materiais de Drywall</h1>
-            <p className="text-blue-200 text-sm">Calcule rapidamente os materiais para sua obra</p>
+            <h1 className="text-2xl font-bold tracking-tight md:text-3xl sm:text-4xl">
+              Calculadora de Materiais de Drywall
+            </h1>
           </div>
         </div>
-        
+
         <nav className="flex space-x-4">
-          <a 
-            href="#como-usar" 
+          <a
+            href="#como-usar"
             className="text-blue-100 hover:text-white text-sm font-medium transition-colors duration-200"
           >
             Como Usar
           </a>
-          <a 
-            href="#sobre" 
+          <a
+            href="#sobre"
             className="text-blue-100 hover:text-white text-sm font-medium transition-colors duration-200"
           >
             Sobre
