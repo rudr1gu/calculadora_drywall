@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { calculateMaterials, defaultMaterials } from '../utils/calculations';
+import { calculateMaterials } from '../utils/calculations';
 import MaterialsTable from './MaterialsTable';
 import { Material, CalculationResult } from '../types';
+import { liningMaterials } from '../utils/liningMaterials';
 
 const Calculator: React.FC = () => {
   const [area, setArea] = useState<string>('');
   const [results, setResults] = useState<CalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [materials, setMaterials] = useState<Material[]>(defaultMaterials);
+  const [materials, setMaterials] = useState<Material[]>(liningMaterials);
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,15 +17,14 @@ const Calculator: React.FC = () => {
     const areaValue = parseFloat(area);
     
     if (!areaValue || isNaN(areaValue) || areaValue <= 0) {
-      setError('Please enter a valid area greater than zero');
+      setError('porfavor, insira um valor válido para a área.');
       setResults(null);
       return;
     }
     
     setError('');
     setIsCalculating(true);
-    
-    // Simulate calculation delay for better UX
+
     setTimeout(() => {
       const calculationResults = calculateMaterials(areaValue, materials);
       setResults(calculationResults);
