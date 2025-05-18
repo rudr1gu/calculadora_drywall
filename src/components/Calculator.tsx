@@ -34,12 +34,12 @@ const Calculator: React.FC = () => {
               <label className="block text-gray-700 text-sm font-medium mb-2">Tipo de Área</label>
               <select
                 value={tipoArea}
-                onChange={(e) => setTipoArea(e.target.value as 'forro' | 'parede' | 'contraParede')}
+                onChange={(e) => setTipoArea(e.target.value as 'Forro' | 'Parede' | 'Contra Parede')}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg"
               >
-                <option value="forro">Forro</option>
-                <option value="parede">Parede</option>
-                <option value="contraParede">Contra Parede</option>
+                <option value="Forro">Forro</option>
+                <option value="Parede">Parede</option>
+                <option value="Contra Parede">Contra Parede</option>
               </select>
             </div>
 

@@ -8,7 +8,7 @@ import { CalculationResult } from "../models/CalculationResult";
 
 export const useCalculator = () => {
     const [area, setArea] = useState<string>('');
-    const [tipoArea, setTipoArea] = useState<'forro' | 'parede' | 'contraParede'>('forro');
+    const [tipoArea, setTipoArea] = useState<'Forro' | 'Parede' | 'Contra Parede'>('Forro');
     const [results, setResults] = useState<CalculationResult | null>(null);
     const [isCalculating, setIsCalculating] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
@@ -37,9 +37,9 @@ export const useCalculator = () => {
 
     const getMaterialsByType = (tipo: string): Material[] => {
         switch (tipo) {
-            case 'parede':
+            case 'Parede':
                 return paredeMaterials;
-            case 'contraParede':
+            case 'Contra Parede':
                 return contraParedeMaterials;
             default:
                 return forroMaterials;
