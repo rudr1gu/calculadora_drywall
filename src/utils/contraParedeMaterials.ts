@@ -1,4 +1,4 @@
-import { Material } from "../types";
+import { Material } from "../models/Material";
 
 export const contraParedeMaterials: Material[] = [
   { 

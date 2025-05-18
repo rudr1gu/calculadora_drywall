@@ -1,61 +1,23 @@
-import React, { useState } from 'react';
-import { calculateMaterials } from '../utils/calculations';
+import React from 'react';
 import MaterialsTable from './MaterialsTable';
-import { Material, CalculationResult } from '../types';
-import { forroMaterials } from '../utils/forroMaterials';
-import { paredeMaterials } from '../utils/paredeMaterials';
-import { contraParedeMaterials } from '../utils/contraParedeMaterials';
-
+import { useCalculator } from '../hooks/useCalculator';
 
 const Calculator: React.FC = () => {
-  const [area, setArea] = useState<string>('');
-  const [tipoArea, setTipoArea] = useState<'forro' | 'parede' | 'contraParede'>('forro');
-  const [results, setResults] = useState<CalculationResult | null>(null);
-  const [isCalculating, setIsCalculating] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
- 
 
-  const handleCalculate = (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    area,
+    tipoArea,
+    results,
+    isCalculating,
+    error,
+    setArea,
+    setTipoArea,
+    handleCalculate,
+    handleReset,
+    handlePrint
+  } = useCalculator();
 
-    const areaValue = parseFloat(area);
 
-    if (!areaValue || isNaN(areaValue) || areaValue <= 0) {
-      setError('porfavor, insira um valor válido para a área.');
-      setResults(null);
-      return;
-    }
-
-    setError('');
-    setIsCalculating(true);
-
-    setTimeout(() => {
-      const calculationResults = calculateMaterials(areaValue, getMaterialsByType(tipoArea));
-      setResults(calculationResults);
-      setIsCalculating(false);
-    }, 600);
-  };
-
-  const getMaterialsByType = (tipo: string): Material[] => {
-    switch (tipo) {
-      case 'parede':
-        return paredeMaterials;
-      case 'contraParede':
-        return contraParedeMaterials;
-      default:
-        return forroMaterials;
-    }
-  };
-
-  const handleReset = () => {
-    setArea('');
-    setResults(null);
-    setError('');
-  };
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-8 print:py-2">

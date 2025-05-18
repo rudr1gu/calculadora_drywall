@@ -1,4 +1,5 @@
-import { Material, CalculationResult } from '../types';
+import { CalculationResult } from "../models/CalculationResult";
+import { Material } from "../models/Material";
 
 export const calculateMaterials = (
   area: number, 
@@ -20,12 +21,10 @@ export const calculateMaterials = (
   };
 };
 
-// Convert square meters to square feet
 export const sqMToSqFt = (sqM: number): number => {
   return sqM * 10.764;
 };
 
-// Convert square feet to square meters
 export const sqFtToSqM = (sqFt: number): number => {
   return sqFt / 10.764;
 };
