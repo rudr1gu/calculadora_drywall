@@ -1,11 +1,11 @@
 import { Material } from "../types";
 
-export const liningMaterials: Material[] = [
+export const contraParedeMaterials: Material[] = [
   { 
     id: 'placa', 
     name: 'Placa ST', 
     unit: 'unidade', 
-    coefficient: 1, 
+    coefficient: 0.48, 
     description: 'Placa ST 1,20m x 1,80m'
   },
   { 
@@ -26,21 +26,21 @@ export const liningMaterials: Material[] = [
     id: 'parafuso', 
     name: 'Parafuso', 
     unit: 'unidade', 
-    coefficient: 22, 
+    coefficient: 13, 
     description: 'Parafuso TA 25mm'
   },
   { 
     id: 'gesso', 
     name: 'Gesso', 
     unit: 'KG', 
-    coefficient: 0.94, 
+    coefficient: 0.47, 
     description: 'Massa de Drywall ou Gesso'
   },
   { 
     id: 'fita', 
     name: 'Fita Tela', 
     unit: 'metros', 
-    coefficient: 2.8, 
+    coefficient: 1.3, 
     description: 'Fita Telada para Drywall'
   },
 ];

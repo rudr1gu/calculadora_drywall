@@ -1,6 +1,6 @@
 import { Material } from "../types";
 
-export const liningMaterials: Material[] = [
+export const forroMaterials: Material[] = [
   { 
     id: 'placa', 
     name: 'Placa ST', 

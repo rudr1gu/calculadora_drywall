@@ -1,9 +1,18 @@
 import { Material, CalculationResult } from '../types';
-import { liningMaterials } from './liningMaterials';
+import { contraParedeMaterials } from './contraParedeMaterials';
+import { forroMaterials } from './forroMaterials';
+import { paredeMaterials } from './paredeMaterials';
+
+export const allMaterials = [
+  forroMaterials,
+  paredeMaterials,
+  contraParedeMaterials
+];
+
 
 export const calculateMaterials = (
   area: number, 
-  materials: Material[] = liningMaterials
+  materials: Material[]
 ): CalculationResult => {
   if (!area || area <= 0) {
     return { materials: [], totalArea: 0 };

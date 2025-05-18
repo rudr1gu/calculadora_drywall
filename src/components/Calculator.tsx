@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { calculateMaterials } from '../utils/calculations';
 import MaterialsTable from './MaterialsTable';
 import { Material, CalculationResult } from '../types';
-import { liningMaterials } from '../utils/liningMaterials';
+import { forroMaterials } from '../utils/forroMaterials';
+
 
 const Calculator: React.FC = () => {
   const [area, setArea] = useState<string>('');
   const [results, setResults] = useState<CalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [materials, setMaterials] = useState<Material[]>(liningMaterials);
+  const [materials, setMaterials] = useState<Material[]>(forroMaterials);
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
