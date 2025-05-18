@@ -8,12 +8,12 @@ const Header: React.FC = () => {
         <div className="flex items-center mb-4 md:mb-0">
           <HardHat size={32} className="mr-3 text-blue-200" />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Calculadora de Materiais</h1>
+            <h1 className="text-2xl font-bold tracking-tight">Calculadora de Materiais de Drywall</h1>
             <p className="text-blue-200 text-sm">Calcule rapidamente os materiais para sua obra</p>
           </div>
         </div>
         
-        <div className="flex space-x-4">
+        <nav className="flex space-x-4">
           <a 
             href="#como-usar" 
             className="text-blue-100 hover:text-white text-sm font-medium transition-colors duration-200"
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
           >
             Sobre
           </a>
-        </div>
+        </nav>
       </div>
     </header>
   );

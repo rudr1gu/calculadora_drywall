@@ -15,6 +15,7 @@ const Footer: React.FC = () => {
           <div id="como-usar">
             <h3 className="text-lg font-semibold text-white mb-4">Como Usar</h3>
             <ol className="text-sm text-gray-400 space-y-2 list-decimal pl-4">
+              <li>Selecione o tipo da Área</li>
               <li>Insira a área total em metros quadrados (m²)</li>
               <li>Clique em "Calcular Materiais"</li>
               <li>Visualize a tabela com as quantidades estimadas</li>
