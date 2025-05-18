@@ -17,12 +17,28 @@ const Calculator: React.FC = () => {
     handlePrint
   } = useCalculator();
 
-
-
   return (
     <section className="max-w-4xl mx-auto px-4 py-8 print:py-2">
       <div className="bg-white rounded-lg shadow-lg p-6 mb-8 print:shadow-none">
-        <form onSubmit={handleCalculate} className="space-y-6">
+        <form onSubmit={handleCalculate} className="space-y-6 print:hidden">
+          <div>
+            <label className="block text-gray-700 text-sm font-medium mb-2">Tipo de Área</label>
+            <div className="flex flex-wrap gap-3">
+              {['Forro', 'Parede', 'Contra Parede'].map((tipo) => (
+                <button
+                  key={tipo}
+                  type="button"
+                  onClick={() => setTipoArea(tipo as 'Forro' | 'Parede' | 'Contra Parede')}
+                  className={`px-5 py-2 rounded-full border font-medium transition-colors duration-200 text-sm shadow-sm ${tipoArea === tipo
+                      ? 'bg-blue-600 text-white border-blue-600'
+                      : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
+                    }`}
+                >
+                  {tipo}
+                </button>
+              ))}
+            </div>
+          </div>
           <div>
             <label
               htmlFor="area"
@@ -30,19 +46,6 @@ const Calculator: React.FC = () => {
             >
               Área total (m²)
             </label>
-            <div className="flex items-center space-x-4 mb-4">
-              <label className="block text-gray-700 text-sm font-medium mb-2">Tipo de Área</label>
-              <select
-                value={tipoArea}
-                onChange={(e) => setTipoArea(e.target.value as 'Forro' | 'Parede' | 'Contra Parede')}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-              >
-                <option value="Forro">Forro</option>
-                <option value="Parede">Parede</option>
-                <option value="Contra Parede">Contra Parede</option>
-              </select>
-            </div>
-
             <div className="relative">
               <input
                 id="area"
@@ -50,16 +53,17 @@ const Calculator: React.FC = () => {
                 step="0.01"
                 min="0"
                 value={area}
-                onChange={e => setArea(e.target.value)}
+                onChange={(e) => setArea(e.target.value)}
                 placeholder="Ex: 100"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none transition-colors duration-200 ${error ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-100 focus:border-blue-500'
+                className={`w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:outline-none transition-colors duration-200 ${error
+                    ? 'border-red-500 focus:ring-red-200'
+                    : 'border-gray-300 focus:ring-blue-100 focus:border-blue-500'
                   }`}
               />
               <span className="absolute right-3 top-3 text-gray-500">m²</span>
             </div>
             {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           </div>
-
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <button
               type="submit"
@@ -89,7 +93,7 @@ const Calculator: React.FC = () => {
                 <button
                   type="button"
                   onClick={handlePrint}
-                  className="w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 print:hidden"
+                  className="w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
                 >
                   Imprimir
                 </button>

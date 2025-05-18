@@ -22,7 +22,6 @@ const MaterialsTable: React.FC<MaterialsTableProps> = ({ results, material }) =>
           Estimativa baseada em coeficientes padrão de construção
         </p>
       </div>
-      
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
@@ -43,11 +42,10 @@ const MaterialsTable: React.FC<MaterialsTableProps> = ({ results, material }) =>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {results.materials.map((material, index) => (
-              <tr 
+              <tr
                 key={material.id}
-                className={`hover:bg-gray-50 transition-colors duration-150 ${
-                  index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                }`}
+                className={`hover:bg-gray-50 transition-colors duration-150 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                  }`}
               >
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                   {material.name}
@@ -66,10 +64,10 @@ const MaterialsTable: React.FC<MaterialsTableProps> = ({ results, material }) =>
           </tbody>
         </table>
       </div>
-      
+
       <div className="p-4 border-t border-gray-200 bg-gray-50 print:bg-white">
         <p className="text-sm text-gray-500">
-          <strong>Nota:</strong> Esta é uma estimativa básica. Os valores podem variar dependendo do tipo de construção, 
+          <strong>Nota:</strong> Esta é uma estimativa básica. Os valores podem variar dependendo do tipo de construção,
           técnicas utilizadas e desperdício. Consulte um profissional para projetos específicos.
         </p>
       </div>
