@@ -1,4 +1,5 @@
-import Calculator from "./Calculator";
+import Calculator from "../calculator/Calculator";
+
 
 const Layout: React.FC = () => {
     return (

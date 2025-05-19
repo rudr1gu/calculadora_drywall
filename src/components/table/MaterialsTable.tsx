@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalculationResult } from '../models/CalculationResult';
+import { CalculationResult } from '../../models/CalculationResult';
 
 
 interface MaterialsTableProps {

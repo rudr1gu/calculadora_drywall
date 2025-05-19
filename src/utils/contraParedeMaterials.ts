@@ -17,7 +17,7 @@ export const contraParedeMaterials: Material[] = [
   },
   { 
     id: 'guia', 
-    name: 'Cantoneira',
+    name: 'Guia',
     unit: 'unidade', 
     coefficient: 0.3, 
     description: 'Guia 48mm/70mm/90mm'

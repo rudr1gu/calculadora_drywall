@@ -1,6 +1,7 @@
 import React from 'react';
-import MaterialsTable from './MaterialsTable';
-import { useCalculator } from '../hooks/useCalculator';
+import { useCalculator } from '../../hooks/useCalculator';
+import MaterialsTable from '../table/MaterialsTable';
+
 
 const Calculator: React.FC = () => {
 
