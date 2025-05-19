@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
               href="https://rudr1gu.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline text-blue-500"
+              className="hover:underline text-gray-300 hover:text-white"
             >
               Rudr1gu
             </a>
