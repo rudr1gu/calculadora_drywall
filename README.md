@@ -26,7 +26,7 @@ O principal objetivo é **otimizar o tempo de levantamento de materiais** para o
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/calculadora_drywall.git
+    git clone https://github.com/rudr1gu/calculadora_drywall.git
     ```
 2. Instale as dependências:
     ```bash
